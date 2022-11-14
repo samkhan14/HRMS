@@ -32,10 +32,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    // public function empDetails()
-    // {
-    //     return $this->hasOne(Employee::class,'user_id');
-    // }
 
     /**
      * The attributes that should be cast to native types.

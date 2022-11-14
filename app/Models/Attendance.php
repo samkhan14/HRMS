@@ -23,6 +23,10 @@ class Attendance extends Model
     public $timestamps = false;
 
     // relation with User
+    public function userdata()
+    {
+        return $this->hasMany();
+    }
 
 
 

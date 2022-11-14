@@ -22,7 +22,7 @@ class AttendanceController extends Controller
 
     public function getAllAttendances()
     {
-       $getAttRecord = Attendance::with('userAsEmployee')->get();
+       $getAttRecord = Attendance::with('userdata')->get();
         dd($getAttRecord);
 
        return view('portal_pages.attendance.admin_attendance',compact('getAttRecord'));

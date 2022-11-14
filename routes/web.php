@@ -37,7 +37,7 @@ Route::resource('departments', DepartmentController::class)->middleware(['auth']
 
 // users
 Route::get('all-users', [\App\Http\Controllers\UsersController::class, 'all_users'])->middleware(['auth']);
-Route::any('add-employee-user',[App\Http\Controllers\UsersController::class, 'adduserEmployee'])->middleware(['auth']);
+Route::any('add-employee-user',[\App\Http\Controllers\UsersController::class, 'adduserEmployee'])->middleware(['auth']);
 
 // employees
 Route::any('all-employees',[\App\Http\Controllers\EmployeeController::class, 'index'])->middleware(['auth']);

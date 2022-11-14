@@ -15,17 +15,14 @@ class EmployeeController extends Controller
     //all employees method
     public function index()
     {
-
         $all_employees = Employee::with('designation', 'department', 'userinfo', 'empType')->get();
-        dd($all_employees);
+       // dd($all_employees);
         return view('portal_pages.employees.employees-list', compact('all_employees'));
     }
 
     //  add employee method
     public function addEmployee(Request $request)
     {
-
-
         if ($request->isMethod('post')) {
             $data = $request->all();
 
