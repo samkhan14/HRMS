@@ -74,7 +74,7 @@
                   <th>Email</th>
                   <th>Role</th>
                   <th>Created Date</th>
-                  <th>Any Update Date</th>
+                  <th>Update Date</th>
                   <th class="text-right">Action</th>
                 </tr>
               </thead>
@@ -83,13 +83,15 @@
                 <tr>
                   <td>
                     <h2 class="table-avatar">
-                      <a href="profile.html" class="avatar"><img src="{{asset('assets/img/profiles/avatar-21.jpg')}}" alt=""></a>
+                      <a href="{{ url('employee/profile/'.$user->id)}}" class="avatar">
+                        <img src="{{ asset('uploads/employee_images/'.$user->empRelation->image)}}" alt="">
+                    </a>
                       <a href="profile.html">{{$user->name}}<span>Admin</span></a>
                     </h2>
                   </td>
                   <td><a href="mailto:{{$user->email}}" class="__cf_email__" data-cfemail="482c2926212d2438273a3c2d3a082d30292538242d662b2725">{{$user->email}}</a></td>
                   <td>
-                    <span class="badge bg-inverse-danger">{{$user->rol_id}}</span>
+                    <span class="badge bg-inverse-danger">{{$user->rol_id == 1 ? 'Super Admin' : 'Executive'}}</span>
                   </td>
                   <td>{{$user->created_at}}</td>
                   <td>{{$user->updated_at}}</td>
@@ -98,7 +100,7 @@
                       <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                       <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_user"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_user"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                        <!-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_user"><i class="fa fa-trash-o m-r-5"></i> Delete</a> -->
                       </div>
                     </div>
                   </td>

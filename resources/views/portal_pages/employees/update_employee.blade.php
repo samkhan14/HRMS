@@ -1,9 +1,9 @@
-@extends('portal_pages.layout.master')
+@extends('portal_pages.layouts.master')
 @section('content')
 
 	<div class="page-wrapper">
 		<div class="container-fluid">
-			<div class="row page-titles">
+			<!-- <div class="row page-titles">
 				<div class="col-md-5 col-8 align-self-center">
 					<h3 class="text-themecolor m-b-0 m-t-0">Update NEW EMPLOYEE</h3>
 					<ol class="breadcrumb">
@@ -29,7 +29,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 
             @if (session()->has('success'))
@@ -51,9 +51,10 @@
 					<div class="card-body">
 						<h4 class="card-title">Update Employee User</h4>
 
-				<form method="post" id="brandForm" name="brandForm" action="/edit/employee" enctype="multipart/form-data">
+				<form method="post" id="brandForm" name="brandForm" action="/update/employee" enctype="multipart/form-data">
 					@csrf
 					<div class="modal-body">
+                       <input type="hidden" name="id" value="{{ $data->id}}">
 						<input type="hidden" name="user_id" value="{{$user_id}}">
 
                         <div class="row mb-3">
@@ -106,26 +107,31 @@
 								<input type="text" name="marital_status" value="{{ $data->marital_status}}" placeholder="Marital Status" class="form-control" >
 							</div>
                              <div class="col">
-								<input type="file" name="image[]" placeholder="Employee Image" class="form-control" >
+								<input type="file" name="empImage[]" placeholder="Employee Image" class="form-control" >
+                                @if(!empty($data->image))
+                                <a href=" {{ url('uploads/employee_images/'.$data->image) }}" target="_blank">you have already image. View Image
+                                 <input type="hidden" name="empImageCheck" value="{{ $data->image}}">
+                                </a>
+                                @endif
 							</div>
 						</div>
 
                         <div class="row mb-3">
-							{{-- <div class="col">
+							<!-- {{-- <div class="col">
                                 <select name="status" id="" class="form-control">
                                     <option  selected>Select Employee Status...</option>
                                     <option>Active</option>
                                     <option>Deactive</option>
                                 </select>
-							</div> --}}
+							</div> --}} -->
                             <div class="col">
                                 <input type="tel" name="salary" value="{{ $data->salary}}" placeholder="Salary" class="form-control" >
 							</div>
                             <div class="col">
 								<select name="empType" id="" class="form-control">
-                                    <option value="0" selected>Select Employee Type...</option>
+                                    <!-- <option value="0" selected>Select Employee Type...</option> -->
                                     @foreach ($etypes as $etype)
-                                    <option value="{{$etype->id}}" @if ($etype->emp_type == 'Contract')? selected @endif>{{ $etype->emp_type}}</option>
+                                    <option value="{{$etype->id}}" {{ $data['etype_id'] == $etype->id ? 'selected' : '' }}>{{ $etype->emp_type}}</option>
                                     @endforeach
                                 </select>
 							</div>
@@ -134,33 +140,39 @@
                         <div class="row mb-3">
 							<div class="col">
                                 <select lect name="designation" id="" class="form-control">
-                                    <option value="1" selected>Select Designation...</option>
+                                    <!-- <option value="1" selected>Select Designation...</option> -->
                                     @foreach ($designation as $des)
-                                    <option value="{{ $des->id}}">{{ $des->des_title }}</option>
+                                    <option value="{{ $des->id}}" {{ $data['desg_id'] == $des->id ? 'selected' : '' }} >{{ $des->des_title }}</option>
                                     @endforeach
                                 </select>
 							</div>
                             <div class="col">
 								<select name="department" id="" class="form-control">
-                                    <option value="1" selected>Select Department...</option>
+                                    <!-- <option value="1" selected>Select Department...</option> -->
                                    @foreach ($department as $dep)
-                                   <option value="{{ $dep->id}}">{{ $dep->dep_name}}</option>
+                                   <option value="{{ $dep->id}}" {{ $data['dep_id'] == $dep->id ? 'selected' : '' }}>{{ $dep->dep_name}}</option>
                                    @endforeach
                                 </select>
 							</div>
 						</div>
-
-						{{-- <div class="form-group">
+                        <div class="row align-items-center">
+                            <div class="col">
+                            <div class="form-group">
 							<label for="">Status</label>
-							<select name="status" id="" class="form-control">
-								<option value="1" selected>Active</option>
-								<option value="0" >Deactive</option>
+							<select name="status" id="status" class="form-control">
+								<option value="1" @if($data->status == 1) selected @endif> Active</option>
+								<option value="0" @if($data->status == 0) selected @endif> Deactive</option>
 							</select>
-						</div> --}}
+						</div>
+                            </div>
+                            <div class="col">
+                            <button type="submit" class="btn btn-md btn-success">Update</button>
+                            </div>
+                        </div>
+
+
 					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-success">Add</button>
-					</div>
+
 				</form>
 					</div>
 				</div>

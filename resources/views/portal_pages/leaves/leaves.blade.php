@@ -102,8 +102,10 @@
                   <th>Leave Type</th>
                   <th>From</th>
                   <th>To</th>
-                  <th>No of Days</th>
                   <th>Reason</th>
+                  <th>No of Days</th>
+                  <th>Remaining</th>
+                  <th>Total</th>
                   <th class="text-center">Status</th>
                   <th class="text-right">Actions</th>
                 </tr>
@@ -121,8 +123,10 @@
                   <td>{{ $all_lvs->leave_type}}</td>
                   <td class="start_date">{{ date('d F, Y', strtotime( $all_lvs->start_date))}}</td>
                   <td>{{ date('d F, Y', strtotime( $all_lvs->end_date))}}</td>
-                  <td>{{$all_lvs->days}}</td>
                   <td>{{$all_lvs->reason}}</td>
+                  <td>{{$all_lvs->days}}</td>
+                  <td>{{$all_lvs->remaining_leaves }}</td>
+                  <td>{{$all_lvs->total_leaves}}</td>
                   <td class="text-center">
                     <div class="dropdown action-label">
                       <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">

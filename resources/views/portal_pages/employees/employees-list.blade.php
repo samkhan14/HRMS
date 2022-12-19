@@ -78,6 +78,7 @@
                 <th>Mobile</th>
                 <th class="text-nowrap">Join Date</th>
                 <th>Role</th>
+                <th>Status</th>
                 <th class="text-right no-sort">Action</th>
               </tr>
             </thead>
@@ -87,31 +88,26 @@
                 <td>{{$all_emps->user_id}}</td>
                 <td>
                   <h2 class="table-avatar">
-                    <a href="{{url('employee/profile',$all_emps->user_id)}}" class="avatar"><img alt="" src="{{asset('uploads/employee_images/'.$all_emps->image)}}"></a>
+                    <a href="{{url('employee/profile',$all_emps->user_id)}}" class="avatar">
+                        <img alt="" src="{{ asset('uploads/employee_images/'.$all_emps->image)}}">
+                    </a>
                     <a href="{{url('employee/profile',$all_emps->user_id)}}">{{$all_emps->fname}} {{$all_emps->lname}} <span>{{$all_emps->designation->des_title}}</span></a>
                   </h2>
                 </td>
                 <td><a href="{{isset($all_emps->userinfo->email)?$all_emps->userinfo->email:'N/A'}}" class="__cf_email__" data-cfemail="046e6b6c6a606b6144617c65697468612a676b69">{{isset($all_emps->userinfo->email)?$all_emps->userinfo->email:'N/A'}}</a></td>
                 <td>{{$all_emps->persnol_number}}</td>
                 <td>{{isset($all_emps->userinfo->created_at)?$all_emps->userinfo->created_at:'N/A'}}</td>
-                <td>
-                  <div class="dropdown">
-                    <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Executive </a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Software Engineer</a>
-                      <a class="dropdown-item" href="#">Software Tester</a>
-                      <a class="dropdown-item" href="#">Frontend Developer</a>
-                      <a class="dropdown-item" href="#">UI/UX Developer</a>
-                    </div>
-                  </div>
-                </td>
+                <td> <a href="" class="btn btn-white btn-sm btn-rounded" aria-expanded="false">{{$all_emps->designation->des_title}} </a></td>
+            <td>
+                {{ $all_emps->status == 1 ? 'Active' : 'InActive' }}
+            </td>
                 <td class="text-right">
                   <div class="dropdown dropdown-action">
                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                     <div class="dropdown-menu dropdown-menu-right">
                       <a class="dropdown-item" href="{{ url('edit/employee/'.$all_emps->id)}}" ><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                    </div>
+                      <!-- <a class="dropdown-item" href="{{ url('/change-employee-status/id/'.$all_emps->id)}}"><i class="fa fa-trash-o m-r-5"></i> {{ $all_emps->status == 1 ? 'InActive' : 'Active' }}</a>
+                    </div> -->
                   </div>
                 </td>
               </tr>
@@ -165,7 +161,7 @@
       </div>
     </div>
   </div>
-  {{-- <div id="add_employee" class="modal custom-modal fade" role="dialog">
+  <!-- {{-- <div id="add_employee" class="modal custom-modal fade" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -769,7 +765,7 @@
         </div>
       </div>
     </div>
-  </div> --}}
+  </div> --}} -->
 </div>
 
 @endsection

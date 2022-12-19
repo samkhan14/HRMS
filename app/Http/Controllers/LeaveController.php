@@ -6,6 +6,7 @@ use App\Models\Leave;
 use App\Models\User;
 use App\Models\Employee;
 use DateTime;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,7 @@ class LeaveController extends Controller
     // all leaves
     public function index()
     {
-        $all_leaves = Leave::with('userinfo')->get();
+        $all_leaves = Leave::with('userinfo')->orderBy('id','DESC')->get();
         return view('portal_pages.leaves.leaves', compact('all_leaves'));
     }
 
@@ -29,16 +30,24 @@ class LeaveController extends Controller
                 $addLeave->emp_id = $data['user_id_as_emp_id'];
             }
             // code for make date difference
-            $start_date = new DateTime($request->start_date);
-            $end_date   = new DateTime($request->end_date);
-            $day = $start_date->diff($end_date);
-            $days = $day->d;
+            // $start_date = new DateTime($request->start_date);
+            // $end_date   = new DateTime($request->end_date);
+            $start_date = Carbon::parse($request->start_date);
+            $end_date   = Carbon::parse($request->end_date);
+            $consumed_leaves = $end_date->diffInDays($start_date) + 1;
+
+              // $days = $consumed_leaves->d;
+            // $day = $start_date->diff($end_date);
+            // $days = $day->d;
 
             $addLeave->leave_type = $data['leave_type'];
-            $addLeave->days = $days;
+            $addLeave->days = $consumed_leaves;
+            $remaining_leaves = $consumed_leaves - $addLeave->remaining_leaves;
+            $addLeave->remaining_leaves = $remaining_leaves;
             $addLeave->start_date = $data['start_date'];
             $addLeave->end_date = $data['end_date'];
             $addLeave->reason = $data['reason'];
+            dd($addLeave);
             $addLeave->save();
             return redirect('/leaves')->with('success', 'Leave has been Submited');
         }

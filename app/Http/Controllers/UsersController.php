@@ -15,7 +15,8 @@ class UsersController extends Controller
 
     public function all_Users()
     {
-        $get_users = User::get();
+        $get_users = User::with('empRelation')->get();
+        //dd($get_users);
         return view('portal_pages.employees.add_user_employees',compact('get_users'));
     }
 

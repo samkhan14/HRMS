@@ -43,19 +43,19 @@ Route::any('add-employee-user',[\App\Http\Controllers\UsersController::class, 'a
 Route::any('all-employees',[\App\Http\Controllers\EmployeeController::class, 'index'])->middleware(['auth']);
 Route::any('add-employee',[\App\Http\Controllers\EmployeeController::class,'addEmployee'])->middleware(['auth']);
 Route::get('employee/profile/{id}',[\App\Http\Controllers\EmployeeController::class, 'employee_profile'])->middleware(['auth']);
-// Route::any('edit/employee/{id}',[App\http\Controllers\EmployeeController::class,'editEmployee']);
-// Route::any('edit/employee',[App\http\Controllers\EmployeeController::class,'updateEmployee']);
+Route::any('edit/employee/{id}',[\App\http\Controllers\EmployeeController::class,'editEmployee'])->middleware(['auth']);
+Route::post('update/employee',[\App\http\Controllers\EmployeeController::class,'updateEmployee'])->middleware(['auth']);
 
 // Attendences
-Route::any('checkin',[\App\Http\Controllers\AttendanceController::class, 'checkin'])->middleware('auth');
-Route::get('attendance-list',[\App\Http\Controllers\AttendanceController::class, 'getAllAttendances'])->middleware('auth');
-Route::any('mark-manual-attendance',[\App\Http\Controllers\AttendanceController::class, 'markManualAttendance'])->middleware('auth');
-Route::any('upload-attendance',[\App\Http\Controllers\AttendanceController::class, 'SaveUploadAttendance'])->middleware('auth');
+Route::any('checkin',[\App\Http\Controllers\AttendanceController::class, 'checkin'])->middleware(['auth']);
+Route::get('attendance-list',[\App\Http\Controllers\AttendanceController::class, 'getAllAttendances'])->middleware(['auth']);
+Route::any('mark-manual-attendance',[\App\Http\Controllers\AttendanceController::class, 'markManualAttendance'])->middleware(['auth']);
+Route::any('upload-attendance',[\App\Http\Controllers\AttendanceController::class, 'SaveUploadAttendance'])->middleware(['auth']);
 
 
 //Leaves
-Route::any('leaves',[\App\Http\Controllers\LeaveController::class, 'index'])->middleware('auth');
-Route::post('add-leave',[\App\Http\Controllers\LeaveController::class, 'addLeave'])->middleware('auth');
-Route::any('approve-leave/{id}',[\App\Http\Controllers\LeaveController::class, 'approveLeave'])->middleware('auth');
-Route::any('reject-leave/{id}',[\App\Http\Controllers\LeaveController::class, 'rejectLeave'])->middleware('auth');
+Route::any('leaves',[\App\Http\Controllers\LeaveController::class, 'index'])->middleware(['auth']);
+Route::post('add-leave',[\App\Http\Controllers\LeaveController::class, 'addLeave'])->middleware(['auth']);
+Route::any('approve-leave/{id}',[\App\Http\Controllers\LeaveController::class, 'approveLeave'])->middleware(['auth']);
+Route::any('reject-leave/{id}',[\App\Http\Controllers\LeaveController::class, 'rejectLeave'])->middleware(['auth']);
 // Route::post('leave/edit',[\App\Http\Controllers\LeaveController::class, 'editLeave'])->middleware('auth');
