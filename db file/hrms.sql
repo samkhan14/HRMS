@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 14, 2022 at 10:31 AM
+-- Generation Time: Jan 04, 2023 at 09:45 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -71,7 +71,6 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`id`, `dep_name`, `created_at`, `updated_at`) VALUES
-(3, 'Designing', '2021-08-08 19:09:18', '2021-08-08 19:09:18'),
 (4, 'HR', '2021-08-08 19:09:24', '2021-12-19 11:55:36'),
 (5, 'Software Development', '2021-08-08 19:09:30', '2021-08-08 19:09:30'),
 (6, 'Finance', '2021-09-20 00:38:35', '2021-09-20 00:38:35'),
@@ -153,7 +152,9 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `user_id`, `fname`, `lname`, `son_of`, `persnol_email`, `age`, `dob`, `gender`, `city`, `address`, `persnol_number`, `marital_status`, `image`, `status`, `salary`, `etype_id`, `desg_id`, `dep_id`, `created_at`, `updated_at`) VALUES
-(27, 52, 'Khan', 'Sahb', 'Faraz Shaikh', 'khan@gm.com', 28, '2022-11-23', 'Male', 'karachi', 'north khi', 4086887553, 'single', '1668277924.jpg', 1, 550000, 1, 12, 3, '2022-11-13 02:32:05', '2022-11-13 02:32:05');
+(27, 52, 'junaid', 'khan', 'Faraz Shaikh', 'khan@gm.com', 28, '2022-11-23', 'Male', 'karachi', 'north khi', 4086887553, 'single', '1671388017.jpg', 1, 550000, 1, 1, 6, '2022-11-13 02:32:05', '2022-12-19 10:38:49'),
+(28, 53, 'Murray', 'Wonder', 'Omnis odit', 'zorokejaji@mailinator.com', 88, '1988-02-01', 'Female', 'Aut ratione eum et N', 'Ex consequat Praese', 656546456456, 'Quis sunt incididunt', '1671388995.jpg', 0, 550000, 2, 3, 5, '2022-12-18 13:29:36', '2022-12-19 08:10:39'),
+(29, 1, 'Sumaim', 'Ahmed Khan', 'Shamim Ahmed', 'sumaim@gm.com', 30, '2022-11-23', 'Male', 'karachi', 'north khi', 4086887553, 'single', '1671388017.jpg', 1, 550000, 1, 1, 6, '2022-11-09 02:32:05', '2022-12-06 10:38:49');
 
 -- --------------------------------------------------------
 
@@ -238,7 +239,7 @@ CREATE TABLE `leaves` (
   `reason` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `action_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remaining_leaves` int NOT NULL DEFAULT '22',
+  `remaining_leaves` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '22',
   `total_leaves` int NOT NULL DEFAULT '22'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -247,12 +248,16 @@ CREATE TABLE `leaves` (
 --
 
 INSERT INTO `leaves` (`id`, `emp_id`, `leave_type`, `days`, `start_date`, `end_date`, `reason`, `status`, `action_by`, `remaining_leaves`, `total_leaves`) VALUES
-(1, 1, 'Medical Leave', NULL, '2022-02-10', '2022-02-17', 'dsadasda', 'Approved', NULL, 19, 22),
-(2, 1, 'Casual Leave 12 Days', 6, '2022-02-08', '2022-02-14', 'dasdasdasdasdad', 'Rejected', NULL, 19, 22),
-(3, 1, 'Casual Leave 12 Days', 10, '2022-02-16', '2022-02-26', 'nothing', 'approved', NULL, 22, 22),
-(4, 2, 'Casual Leave 12 Days', 7, '2022-02-16', '2022-02-23', 'world tour', 'Approved', NULL, 19, 22),
-(5, 1, 'Casual Leave 12 Days', 3, '2022-02-25', '2022-02-28', '5555555555bhjgfchgv', 'Approved', NULL, -1, 22),
-(6, 1, 'Casual Leave 12 Days', 12, '2022-02-16', '2022-02-28', 'dfvdsfdxcvx31231231', 'Approved', NULL, 0, 22);
+(1, 1, 'Medical Leave', NULL, '2022-02-10', '2022-02-17', 'dsadasda', 'Approved', NULL, '0', 22),
+(2, 1, 'Casual Leave 12 Days', 6, '2022-02-08', '2022-02-14', 'dasdasdasdasdad', 'Rejected', NULL, '19', 22),
+(3, 1, 'Casual Leave 12 Days', 10, '2022-02-16', '2022-02-26', 'nothing', 'approved', NULL, '22', 22),
+(4, 2, 'Casual Leave 12 Days', 7, '2022-02-16', '2022-02-23', 'world tour', 'Approved', NULL, '19', 22),
+(5, 1, 'Casual Leave 12 Days', 3, '2022-02-25', '2022-02-28', '5555555555bhjgfchgv', 'Approved', NULL, '-1', 22),
+(6, 1, 'Casual Leave 12 Days', 12, '2022-02-16', '2022-02-28', 'dfvdsfdxcvx31231231', 'Approved', NULL, '0', 22),
+(7, 1, 'Casual Leave 12 Days', 4, '2022-12-09', '2022-12-13', 'Tour with friends', 'pending', NULL, '22', 22),
+(8, 1, 'Casual Leave 12 Days', 5, '2022-12-11', '2022-12-15', 'need rest', 'pending', NULL, '22', 22),
+(9, 1, 'Medical Leave', 5, '2022-12-11', '2022-12-15', 'go for hospital', 'pending', NULL, '5', 22),
+(10, 1, 'Casual Leave 12 Days', 5, '2022-12-11', '2022-12-15', 'abroad', 'pending', NULL, '-5', 22);
 
 -- --------------------------------------------------------
 
@@ -352,8 +357,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `rol_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Sumaim Ahmed', 'sumaim@gm.com', 1, NULL, '$2y$10$AC3e256Vnq1CTzxk5QpeiOfmgtUygBnveZ.qItRPMrQHEuMld9oHS', NULL, '2021-07-01 06:17:09', '2021-07-01 06:17:09'),
-(2, 'Ahmed Ali', 'ahmed@gm.com', 2, NULL, '$2y$10$AC3e256Vnq1CTzxk5QpeiOfmgtUygBnveZ.qItRPMrQHEuMld9oHS', NULL, '2021-07-01 06:17:09', '2021-07-01 06:17:09'),
-(52, 'Khan Sahb', 'khan@mail.com', 2, NULL, '$2y$10$MgjzuVsZrQ6mZ4wqfudL3e3/hurDaQCL3c7JBdRn4XTyk7GCnVq9W', NULL, '2022-11-13 02:30:04', '2022-11-13 02:30:04');
+(52, 'Khan Sahb', 'khan@mail.com', 2, NULL, '$2y$10$MgjzuVsZrQ6mZ4wqfudL3e3/hurDaQCL3c7JBdRn4XTyk7GCnVq9W', NULL, '2022-11-13 02:30:04', '2022-11-13 02:30:04'),
+(53, 'Keith Combs', 'keith@gm.com', 2, NULL, '$2y$10$MiF/mGcLDX5iKRT5yQfX5.oaz.aAQ9XrowMSGkZ8ZzEDxBiCUls6e', NULL, '2022-12-18 13:28:33', '2022-12-18 13:28:33');
 
 -- --------------------------------------------------------
 
@@ -362,13 +367,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `rol_id`, `email_verified_at`, `pass
 -- (See below for the actual view)
 --
 CREATE TABLE `vattendance` (
-`attendance_type` varchar(211)
+`id` int
+,`user_id` int
+,`date` date
 ,`checkin` time
 ,`checkout` time
-,`date` date
-,`id` int
+,`attendance_type` varchar(211)
 ,`name` varchar(255)
-,`user_id` int
 );
 
 -- --------------------------------------------------------
@@ -508,7 +513,7 @@ ALTER TABLE `documents`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `employee_types`
@@ -538,7 +543,7 @@ ALTER TABLE `leaveqoutas`
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -562,7 +567,7 @@ ALTER TABLE `todos`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
