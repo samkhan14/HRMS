@@ -14,19 +14,11 @@
         </div>
       </div>
 
-      @if (session()->has('success'))
-      <div class="alert alert-success">
-          @if(is_array(session('success')))
-              <ul>
-                  @foreach (session('success') as $message)
-                      <li>{{ $message }}</li>
-                  @endforeach
-              </ul>
-          @else
-              {{ session('success') }}
-          @endif
-      </div>
-      @endif
+      <div class="row">
+            <div class="col-lg-12">
+                <x-message />
+            </div>
+        </div>
 
       <div class="row">
         <div class="col-md-12">

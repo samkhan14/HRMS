@@ -19,28 +19,20 @@
         </div>
       </div>
       <div class="row">
-        @if (session()->has('success'))
-        <div class="alert alert-success">
-            @if(is_array(session('success')))
-                <ul>
-                    @foreach (session('success') as $message)
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-            @else
-                {{ session('success') }}
-            @endif
+        <div class="col-lg-12">
+        <x-message />
         </div>
-        @endif
-        <div class="col-md-12">
+      </div>
+      <div class="row">
+       <div class="col-md-12">
           <div>
             <table class="table table-striped custom-table mb-0 datatable">
               <thead>
                 <tr>
                   <th style="width: 30px;">#</th>
                   <th>Department Name</th>
-                  <th class="text-right">Created at</th>
-                  <th class="text-right">Action</th>
+                  <th>Created at</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -49,7 +41,7 @@
                   <td>{{ $get_dep->id}}</td>
                   <td>{{ $get_dep->dep_name}}</td>
                   <td>{{$get_dep->created_at}}</td>
-                  <td class="text-right">
+                  <td>
                     <div class="dropdown dropdown-action">
                       <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                       <div class="dropdown-menu dropdown-menu-right">

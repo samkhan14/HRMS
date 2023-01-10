@@ -30,21 +30,11 @@
 					</div>
 				</div>
 			</div>
-
-
-            @if (session()->has('success'))
-            <div class="alert alert-success">
-                @if(is_array(session('success')))
-                    <ul>
-                        @foreach (session('success') as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                @else
-                    {{ session('success') }}
-                @endif
+            <div class="row">
+            <div class="col-lg-12">
+                <x-message />
             </div>
-            @endif
+            </div>
 
 			<div class="col-12">
 				<div class="card">

@@ -15,7 +15,7 @@ class DesignationController extends Controller
     public function index()
     {
         // return 'working';
-        $get_designations = Designation::latest()->paginate(5);
+        $get_designations = Designation::get();
         return view('portal_pages.designation.designations',compact('get_designations'));
     }
 
