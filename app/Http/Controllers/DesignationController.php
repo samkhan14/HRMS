@@ -64,7 +64,12 @@ class DesignationController extends Controller
      */
     public function edit($id)
     {
-              $edit_desg = Designation::findorFail($id);
+        try {
+            $edit_desg = Designation::findorFail($id);
+        } catch (\Exception $e) {
+            return view('portal_pages.error.notFound');
+        }
+
              return view('portal_pages.designation.edit_designation',compact('edit_desg'));
             // return view('portal_pages.designation.designation',compact('id'));
     }

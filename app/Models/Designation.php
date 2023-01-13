@@ -12,4 +12,14 @@ class Designation extends Model
 
     protected $fillable = ['des_title'];
     protected $dates = ['deleted_at'];
+
+    public function setDestitleAttribute($value)
+    {
+        $this->attributes['des_title'] = strtolower($value);
+    }
+
+    public function getDestitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
 }

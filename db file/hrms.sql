@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 04, 2023 at 09:45 AM
+-- Generation Time: Jan 13, 2023 at 05:29 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -74,7 +74,15 @@ INSERT INTO `departments` (`id`, `dep_name`, `created_at`, `updated_at`) VALUES
 (4, 'HR', '2021-08-08 19:09:24', '2021-12-19 11:55:36'),
 (5, 'Software Development', '2021-08-08 19:09:30', '2021-08-08 19:09:30'),
 (6, 'Finance', '2021-09-20 00:38:35', '2021-09-20 00:38:35'),
-(10, 'cubes tech', '2022-10-09 13:02:09', '2022-10-09 13:02:09');
+(10, 'cubes tech', '2022-10-09 13:02:09', '2022-10-09 13:02:09'),
+(11, 'Designs', '2023-01-10 07:28:29', '2023-01-10 07:28:29'),
+(12, 'Accounts', '2023-01-10 07:29:28', '2023-01-10 07:29:28'),
+(13, 'Sales', '2023-01-10 07:31:34', '2023-01-10 07:31:34'),
+(14, 'Dinah my.', '2023-01-10 11:54:38', '2023-01-10 11:54:38'),
+(15, 'Alice as.', '2023-01-10 11:54:39', '2023-01-10 11:54:39'),
+(16, 'I\'m sure.', '2023-01-10 11:54:39', '2023-01-10 11:54:39'),
+(17, 'Cat, and.', '2023-01-10 11:54:39', '2023-01-10 11:54:39'),
+(18, 'Pray how.', '2023-01-10 11:54:39', '2023-01-10 11:54:39');
 
 -- --------------------------------------------------------
 
@@ -86,21 +94,42 @@ CREATE TABLE `designations` (
   `id` bigint UNSIGNED NOT NULL,
   `des_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `designations`
 --
 
-INSERT INTO `designations` (`id`, `des_title`, `created_at`, `updated_at`) VALUES
-(1, 'Sr: Sales Executive', '2021-07-28 23:39:37', '2021-07-28 23:39:37'),
-(3, 'Dev Team Lead', '2021-07-28 23:41:31', '2021-07-28 23:41:31'),
-(5, 'Jr: Php Developers', '2021-07-28 23:45:05', '2022-10-09 13:02:33'),
-(12, 'Sr: Designer', '2021-09-27 01:40:20', '2021-09-27 01:40:20'),
-(13, 'Frontend Developer', '2021-09-27 01:40:39', '2021-09-27 01:40:39'),
-(14, 'SR: Hr Executive', '2021-09-27 01:41:05', '2021-09-27 01:41:05'),
-(15, 'content writer', '2021-12-19 11:08:14', '2021-12-19 11:08:14');
+INSERT INTO `designations` (`id`, `des_title`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Sr: Sales Executive', '2021-07-28 23:39:37', '2021-07-28 23:39:37', NULL),
+(3, 'Dev Team Lead', '2021-07-28 23:41:31', '2021-07-28 23:41:31', NULL),
+(5, 'Jr: Php Developers', '2021-07-28 23:45:05', '2022-10-09 13:02:33', NULL),
+(12, 'Sr: Designer', '2021-09-27 01:40:20', '2021-09-27 01:40:20', NULL),
+(13, 'Frontend Developer', '2021-09-27 01:40:39', '2021-09-27 01:40:39', NULL),
+(14, 'SR: Hr Executive', '2021-09-27 01:41:05', '2021-09-27 01:41:05', NULL),
+(15, 'content writer', '2021-12-19 11:08:14', '2021-12-19 11:08:14', NULL),
+(17, 'PPC Specialists', '2023-01-10 07:33:05', '2023-01-10 07:33:05', NULL),
+(18, 'Java Developer', '2023-01-10 07:34:42', '2023-01-10 07:34:42', NULL),
+(19, 'Front Sales', '2023-01-10 07:40:43', '2023-01-10 07:40:43', NULL),
+(20, 'New Cashout', '2023-01-10 12:04:49', '2023-01-10 12:04:49', NULL),
+(21, 'Zola Treutel V', '2023-01-10 12:09:51', '2023-01-10 12:09:51', NULL),
+(22, 'Myrtice D\'Amore', '2023-01-10 12:11:59', '2023-01-10 12:11:59', NULL),
+(23, 'Prof. Vilma Smith', '2023-01-10 12:11:59', '2023-01-10 12:11:59', NULL),
+(24, 'Tomas Cole', '2023-01-10 12:11:59', '2023-01-10 13:55:16', '2023-01-10 13:55:16'),
+(25, 'Mrs. Ericka Nicolas MD', '2023-01-10 12:11:59', '2023-01-10 12:11:59', NULL),
+(26, 'Sam Ernser V', '2023-01-10 12:11:59', '2023-01-10 12:11:59', NULL),
+(27, 'Justina Bergnaum I', '2023-01-10 12:11:59', '2023-01-10 12:11:59', NULL),
+(28, 'Theodora Cormier', '2023-01-10 12:11:59', '2023-01-10 12:11:59', NULL),
+(29, 'Julius Zulauf', '2023-01-10 12:11:59', '2023-01-10 12:11:59', NULL),
+(30, 'Dr. Korey Bechtelar', '2023-01-10 12:11:59', '2023-01-10 12:11:59', NULL),
+(31, 'testing mutator', '2023-01-11 11:59:33', '2023-01-11 11:59:33', NULL),
+(32, 'TESTING MUTATOR 2', '2023-01-11 12:04:07', '2023-01-11 12:04:07', NULL),
+(33, 'DASDASDASDASD', '2023-01-11 12:35:06', '2023-01-11 12:35:06', NULL),
+(34, 'dsavvvvvvvvvv', '2023-01-11 12:36:01', '2023-01-11 12:36:01', NULL),
+(35, 'ttttttttttttttssssssssssssskksisisisis', '2023-01-11 12:36:30', '2023-01-11 12:36:30', NULL),
+(36, 'dotcom', '2023-01-11 12:45:44', '2023-01-11 12:45:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -239,7 +268,7 @@ CREATE TABLE `leaves` (
   `reason` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `action_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remaining_leaves` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '22',
+  `remaining_leaves` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '22',
   `total_leaves` int NOT NULL DEFAULT '22'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -288,7 +317,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2021_04_14_185851_create_leaveqoutas_table', 1),
 (11, '2021_04_14_190034_create_leaves_table', 1),
 (12, '2021_04_14_190742_create_employer_sumeries_table', 1),
-(13, '2021_04_20_175848_create_roles_table', 1);
+(13, '2021_04_20_175848_create_roles_table', 1),
+(14, '2019_12_14_000001_create_personal_access_tokens_table', 2),
+(15, '2023_01_10_173529_add_soft_delete_to_designations_table', 2);
 
 -- --------------------------------------------------------
 
@@ -300,6 +331,24 @@ CREATE TABLE `password_resets` (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -463,6 +512,14 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -495,13 +552,13 @@ ALTER TABLE `attendances`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `designations`
 --
 ALTER TABLE `designations`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `documents`
@@ -549,7 +606,13 @@ ALTER TABLE `leaves`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `roles`
