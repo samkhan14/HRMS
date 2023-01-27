@@ -1,7 +1,7 @@
 <x-mail::message>
 # Introduction
 
-The body of your message.
+This email is from HRMS
 
 <x-mail::button :url="''">
 Button Text
