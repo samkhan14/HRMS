@@ -42,7 +42,8 @@ class DesignationController extends Controller
         ]);
 
         Designation::create($request->all());
-        return redirect('designations')->with('success','Designation Added Successfully');
+        return response()->json(['success'=>'Successfully']);
+        // return redirect('designations')->with('success','Designation Added Successfully');
     }
 
     /**
@@ -88,12 +89,6 @@ class DesignationController extends Controller
 
      Designation::whereId($id)->update($data);
      return redirect('/designations')->with('success','Designation Name has been updated');
-
-
-
-
-
-
         // $designation->update($request->all());
         // return redirect('/designations');
     }

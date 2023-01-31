@@ -14,7 +14,7 @@
             </ul>
           </div>
           <div class="col-auto float-right ml-auto">
-            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_department"><i class="fa fa-plus"></i> Add Designation</a>
+            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_designation"><i class="fa fa-plus"></i> Add Designation</a>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div id="add_department" class="modal custom-modal fade" role="dialog">
+    <div id="add_designation" class="modal custom-modal fade" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -73,12 +73,12 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="{{ route('designations.store')}}">
+            <form id="saveDesignation" method="POST" action="{{ route('designations.store')}}">
                 @csrf
               <div class="form-group">
                 <label>Designation Name <span class="text-danger">*</span></label>
                 <input type="hidden" name="des_id" value="">
-                <input class="form-control" type="text" name="des_title" required>
+                <input class="form-control" type="text" name="des_title" id="des_title" required>
               </div>
               <div class="submit-section">
                 {{-- <button type="submit" class="btn btn-primary submit-btn">Submit</button> --}}
@@ -104,7 +104,7 @@
                 @method('PATCH')
               <div class="form-group">
                 <label>Department Name <span class="text-danger">*</span></label>
-                <input class="form-control" value="{{$department->dep_name}}" name="dep_name" type="text">
+                <input class="form-control" value="{{$department->dep_name}}" name="dep_name" type="text" >
               </div>
               <div class="submit-section">
                 <button class="btn btn-primary submit-btn">Save</button>
@@ -139,3 +139,5 @@
   </div>
 </div>
 @endsection
+
+
