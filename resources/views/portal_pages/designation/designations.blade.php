@@ -37,7 +37,7 @@
               </thead>
               <tbody>
                 @foreach($get_designations as $get_des)
-                <tr>
+                <tr {{ $get_des->id}}>
                   <td>{{ $get_des->id}}</td>
                   <td>{{ $get_des->des_title}}</td>
                   <td>{{$get_des->created_at}}</td>

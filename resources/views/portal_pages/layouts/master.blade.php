@@ -62,7 +62,7 @@
 <script src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
 <script src="{{asset('assets/js/popper.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-
+<script src="{{asset('assets/js/custom.js')}}"></script>
 
 
 
@@ -76,9 +76,40 @@
 <script src="{{asset('assets/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/js/select2.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
-<script src="{{asset('assets/js/custom.js')}}"></script>
+
 <script src="{{asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js')}}"></script>
 <script src="{{asset('assets/js/app.js')}}"></script>
 
+
+<script>
+    // save designation via ajax
+$('#saveDesignation').on('submit', function(e){
+    e.preventDefault();
+
+    var designationName = $('#des_title').val();
+   // console.log(designationName)
+   $.ajaxSetup({
+    headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+    });
+
+    $.ajax({
+        url:"{{ route('designations.store')}}",
+        type:"POST",
+        dataType:"json",
+        data:$("#saveDesignation").serialize(),
+        success:function(data){
+            console.log("Added", data)
+             $('#add_designation').modal('hide');
+             $('#alertmsg').html(data);
+        },
+        error:function(data){
+            console.log("Error", data)
+        }
+    })
+});
+
+</script>
 </body>
 </html>

@@ -11,7 +11,7 @@ $('#saveDesignation').on('submit', function(e){
     });
 
     $.ajax({
-        url:"{{route('designations.store')}}",
+        url:"{{ route('designations.store')}}",
         type:"POST",
         dataType:"json",
         data:$("#saveDesignation").serialize(),

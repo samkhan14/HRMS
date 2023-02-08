@@ -96,7 +96,7 @@ else{
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-md-4">
+                 <div class="col-md-4">
                     <div class="card att-statistics">
                         <div class="card-body">
                             <h5 class="card-title">Statistics</h5>
@@ -190,9 +190,9 @@ else{
                             </ul>
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
-            {{-- <div class="row filter-row">
+            <div class="row filter-row">
                 <div class="col-sm-3">
                     <div class="form-group form-focus">
                         <div class="cal-icon">
@@ -483,7 +483,7 @@ else{
                         </section>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 
