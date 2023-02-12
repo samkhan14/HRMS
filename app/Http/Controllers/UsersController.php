@@ -12,15 +12,29 @@ use App\Mail\Welcome;
 use Response;
 use Session;
 use DB;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UsersController extends Controller
 {
 
     public function all_Users()
     {
-        $get_users = User::with('empRelation')->get();
-        //dd($get_users);
-        return view('portal_pages.employees.add_user_employees',compact('get_users'));
+       // return User::role('HR')->get();
+        //return auth()->user()->getAllPermissions();
+        //return  auth()->user()->givePermissionTo('edit user');
+         //auth()->user()->assignRole('executive');
+
+        //  Role::create(['name' => 'writer']);
+        //  Permission::create(['name' => 'edit articles']);
+//          $role = Role::findById(3);
+        // // // $role->revokePermissionTo($role);
+        //  $permission = Permission::findById(3);
+        // // // $permission->removeRole($role);
+        //  $role->givePermissionTo($permission);
+
+          $get_users = User::with('empRelation')->get();
+          return view('portal_pages.employees.add_user_employees',compact('get_users'));
     }
 
     //add user for employee
