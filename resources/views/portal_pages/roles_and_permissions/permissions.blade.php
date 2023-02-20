@@ -7,47 +7,47 @@
 
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="page-title">Designation</h3>
+            <h3 class="page-title">Permissions</h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-              <li class="breadcrumb-item active">Designation</li>
+              <li class="breadcrumb-item active">Permission</li>
             </ul>
           </div>
           <div class="col-auto float-right ml-auto">
-            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_designation"><i class="fa fa-plus"></i> Add Designation</a>
+            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_department"><i class="fa fa-plus"></i> Add Permission</a>
           </div>
         </div>
       </div>
       <div class="row">
-            <div class="col-lg-12">
-                <x-message />
-            </div>
+        <div class="col-lg-12">
+        <x-message />
         </div>
+      </div>
       <div class="row">
-        <div class="col-md-12">
+       <div class="col-md-12">
           <div>
-            <table class="table table-striped custom-table mb-0 datatable" id="table_designation">
+            <table class="table table-striped custom-table mb-0 datatable">
               <thead>
                 <tr>
                   <th style="width: 30px;">#</th>
-                  <th>Designation Name</th>
+                  <th>Permission Name</th>
                   <th>Created at</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($get_designations as $get_des)
-                <tr {{ $get_des->id}}>
-                  <td>{{ $get_des->id}}</td>
-                  <td>{{ $get_des->des_title}}</td>
-                  <td>{{$get_des->created_at}}</td>
+                @foreach($permissions as $permission)
+                <tr>
+                  <td>{{ $permission->id}}</td>
+                  <td>{{ $permission->name}}</td>
+                  <td>{{$permission->created_at}}</td>
                   <td>
                     <div class="dropdown dropdown-action">
                       <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="{{ route('designations.edit', $get_des->id)}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                        <a class="dropdown-item" href="{{ $permission->id}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
 
-                        <form action="{{ route('designations.destroy', $get_des->id)}}" method="post">
+                        <form action="{{ route('permissions.destroy', $permission->id)}}" method="post">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="dropdown-item">Delete</button>
@@ -63,26 +63,26 @@
         </div>
       </div>
     </div>
-    <div id="add_designation" class="modal custom-modal fade" role="dialog">
+    <div id="add_department" class="modal custom-modal fade" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Add Designation</h5>
+            <h5 class="modal-title">Add New Permission</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form id="saveDesignation" method="POST" action="{{ route('designations.store')}}">
+            <form method="POST" action="{{ route('permissions.store')}}">
                 @csrf
               <div class="form-group">
-                <label>Designation Name <span class="text-danger">*</span></label>
-                <input type="hidden" name="des_id" value="">
-                <input class="form-control" type="text" name="des_title" id="des_title" required>
+                <label>Permission Name <span class="text-danger">*</span></label>
+                <input type="hidden" name="permission_id" value="">
+                <input class="form-control" type="text" name="name" required>
               </div>
               <div class="submit-section">
                 {{-- <button type="submit" class="btn btn-primary submit-btn">Submit</button> --}}
-                <input type="submit" class="btn btn-primary" value="Add">
+                <input type="submit" class="btn btn-primary" value="Add New">
               </div>
             </form>
           </div>
@@ -104,7 +104,7 @@
                 @method('PATCH')
               <div class="form-group">
                 <label>Department Name <span class="text-danger">*</span></label>
-                <input class="form-control" value="{{$department->dep_name}}" name="dep_name" type="text" >
+                <input class="form-control" value="{{$department->dep_name}}" name="dep_name" type="text">
               </div>
               <div class="submit-section">
                 <button class="btn btn-primary submit-btn">Save</button>
@@ -139,5 +139,3 @@
   </div>
 </div>
 @endsection
-
-
