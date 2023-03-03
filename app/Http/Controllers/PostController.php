@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use Illuminate\Http\Request;
+use Redirect;
+
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->get();
-        return view('posts.index', compact('posts'));
+        //
+        $data['posts'] = Post::orderBy('id','desc')->paginate(8);
+
+        return view('posts.index',$data);
     }
 
     /**
@@ -27,34 +27,36 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = Post::updateOrCreate(
-            [
-                'id' => $request->postId
-            ],
+        //
+        $postID = $request->post_id;
+        $post   =   Post::updateOrCreate(
+            ['id' => $postID],
             [
                 'title' => $request->title,
-                'description' => $request->description
+                 'body' => $request->body
             ]
         );
 
-        if ($post) {
-            return response()->json(['status' => 'success', 'data' => $post]);
-        }
-        return response()->json(['status' => 'failed', 'message' => 'Failed! Post not created']);
+        //dd($post);
+
+        return response()->json($post);
     }
 
+
+
     /**
-     * Display the specified resource.
+     * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function edit($id)
     {
-        if ($post) {
-            return response()->json(['status' => 'success', 'data' => $post]);
-        }
-        return response()->json(['status' => 'failed', 'message' => 'No post found']);
+        //
+        $where = array('id' => $id);
+        $post  = Post::where($where)->first();
+
+        return response()->json($post);
     }
 
     /**
@@ -63,9 +65,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        $post->delete();
-        return response()->json(['status' => 'success', 'data' => $post]);
+        //
+        $post = Post::where('id',$id)->delete();
+
+        return response()->json($post);
     }
 }

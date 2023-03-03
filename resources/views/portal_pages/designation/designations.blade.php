@@ -26,6 +26,7 @@
       <div class="row">
         <div class="col-md-12">
           <div>
+            <div class="outputmsg" id="outputmsg"></div>
             <table class="table table-striped custom-table mb-0 datatable" id="table_designation">
               <thead>
                 <tr>
@@ -89,7 +90,7 @@
         </div>
       </div>
     </div>
-    {{-- <div id="edit_department" class="modal custom-modal fade" role="dialog">
+    <div id="edit_designation" class="modal custom-modal fade" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -99,12 +100,12 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="{{ route('departments.update',$department->id)}}">
+            <form method="POST" action="">
                 @csrf
                 @method('PATCH')
               <div class="form-group">
                 <label>Department Name <span class="text-danger">*</span></label>
-                <input class="form-control" value="{{$department->dep_name}}" name="dep_name" type="text" >
+                <input class="form-control" value="" name="des_title" type="text" >
               </div>
               <div class="submit-section">
                 <button class="btn btn-primary submit-btn">Save</button>
@@ -114,7 +115,7 @@
         </div>
       </div>
     </div>
-    <div class="modal custom-modal fade" id="delete_department" role="dialog">
+    {{--  <div class="modal custom-modal fade" id="delete_department" role="dialog">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">

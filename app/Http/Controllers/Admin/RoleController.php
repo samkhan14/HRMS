@@ -34,14 +34,16 @@ class RoleController extends Controller
         return redirect()->route('roles.index')->with('success','New Role has been created');
     }
 
+    public function update(Request $request, Role $role)
+    {
+        return dd("edit role");
+    }
+
     public function destroy(Role $role)
     {
         $role->delete();
         return redirect()->back()->with('success','Role has been deleted');
     }
 
-    public function update(Request $request, $id)
-    {
-        return dd("edit role");
-    }
+
 }
