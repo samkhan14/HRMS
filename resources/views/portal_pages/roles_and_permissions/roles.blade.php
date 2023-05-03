@@ -14,9 +14,10 @@
             </ul>
           </div>
           <div class="col-auto float-right ml-auto">
-            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_department"><i class="fa fa-plus"></i> Add Role</a>
+            <a href="javascript:void(0)" class="btn add-btn" id="create-new-post"><i class="fa fa-plus"></i> Add Role</a>
           </div>
         </div>
+        <div class="textmsg"></div>
       </div>
       <div class="row">
         <div class="col-lg-12">
@@ -26,7 +27,7 @@
       <div class="row">
        <div class="col-md-12">
           <div>
-            <table class="table table-striped custom-table mb-0 datatable">
+            <table class="table table-striped custom-table mb-0 datatable" id="role_crud">
               <thead>
                 <tr>
                   <th style="width: 30px;">#</th>
@@ -35,9 +36,9 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="role-crud">
                 @foreach($roles as $role)
-                <tr>
+                <tr id="role_id_{{ $role->id }}">
                   <td>{{ $role->id}}</td>
                   <td>{{ $role->name}}</td>
                   <td>{{$role->created_at}}</td>
@@ -45,12 +46,9 @@
                     <div class="dropdown dropdown-action">
                       <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item roleUpdate" href="{{$role->id}}" data-toggle="modal" data-id="{{ $role->id }}" data-target="#edit_role"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                        <form action="{{ route('roles.destroy', $role->id)}}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="dropdown-item">Delete</button>
-                        </form>
+                        <a class="dropdown-item roleUpdate" href="javascript:void(0)" id="edit-role" data-id="{{ $role->id }}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                         <a href="javascript:void(0)" class="dropdown-item delete-role" id="delete-role" data-id="{{ $role->id }}">Delete</a>
+
                       </div>
                     </div>
                   </td>
@@ -68,7 +66,7 @@
             <ul>
                 @if ($role->permissions)
                     @foreach ($role->permissions as $role_permission )
-                    <li>$role_permission->name</li>
+                    <li>{{$role_permission->name}}</li>
                     @endforeach
                 @endif
                 </ul>
@@ -77,26 +75,25 @@
       </div>
     </div>
 
-    <div id="add_department" class="modal custom-modal fade" role="dialog">
+    <div id="ajax-roles-crud-modal" class="modal custom-modal fade" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Add New Role</h5>
+            <h5 class="modal-title" id="postCrudModal"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="{{ route('roles.store')}}">
-                @csrf
+            <form id="rolesForm" method="POST" action="{{ route('roles.store')}}" name="rolesForm">
+            <input type="hidden" name="role_id" id="role_id" value="">
               <div class="form-group">
                 <label>Role Name <span class="text-danger">*</span></label>
-                <input type="hidden" name="role_id" value="">
-                <input class="form-control" type="text" name="name" required>
+                <input class="form-control" id="name" type="text" name="name" required>
               </div>
               <div class="submit-section">
-                {{-- <button type="submit" class="btn btn-primary submit-btn">Submit</button> --}}
-                <input type="submit" class="btn btn-primary" value="Add New">
+                 <button type="submit" id="role-save" value="create" class="btn btn-primary submit-btn">Save</button>
+                <!-- <input type="submit" class="btn btn-primary" value="Add New"> -->
               </div>
             </form>
           </div>
@@ -104,7 +101,7 @@
       </div>
     </div>
 
-     <div id="edit_role" class="modal custom-modal fade" role="dialog">
+     <!-- <div id="edit_role" class="modal custom-modal fade" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -129,9 +126,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    {{--<div class="modal custom-modal fade" id="delete_department" role="dialog">
+    <!-- <div class="modal custom-modal fade" id="delete_department" role="dialog">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-body">
@@ -152,7 +149,7 @@
           </div>
         </div>
       </div>
-    </div> --}}
+    </div> -->
   </div>
 </div>
 @endsection
