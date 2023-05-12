@@ -41,7 +41,7 @@ class UsersController extends Controller
     public function adduserEmployee(Request $request)
     {
         // return Auth::user();
-        if(!empty(Auth::user()->rol_id) AND Auth::user()->rol_id == 1){
+       // if(!empty(Auth::user()->rol_id) AND Auth::user()->rol_id == 1){
             if($request->isMethod('post')){
                 $data = $request->all();
                 $user = new User;
@@ -60,10 +60,10 @@ class UsersController extends Controller
             else{
                 return redirect::back()->with('error','User not created Yet Please try again');
             }
-        }
-        else{
-            return redirect::back()->with('error','you are not allowed to add a new user');
-        }
+      //  }
+        // else{
+        //     return redirect::back()->with('error','you are not allowed to add a new user');
+        // }
 
     }
 
