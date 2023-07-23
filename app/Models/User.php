@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Employee::class);
     }
+
+    public function role()
+    {
+        return $this->roles->first(); // Assuming a user can have only one role
+    }
 }

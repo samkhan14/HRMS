@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 13, 2023 at 05:29 PM
+-- Generation Time: Feb 20, 2023 at 06:21 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -56,6 +56,19 @@ INSERT INTO `attendances` (`id`, `user_id`, `date`, `checkin`, `checkout`, `atte
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `custom_roles`
+--
+
+CREATE TABLE `custom_roles` (
+  `id` bigint UNSIGNED NOT NULL,
+  `role_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `departments`
 --
 
@@ -82,7 +95,13 @@ INSERT INTO `departments` (`id`, `dep_name`, `created_at`, `updated_at`) VALUES
 (15, 'Alice as.', '2023-01-10 11:54:39', '2023-01-10 11:54:39'),
 (16, 'I\'m sure.', '2023-01-10 11:54:39', '2023-01-10 11:54:39'),
 (17, 'Cat, and.', '2023-01-10 11:54:39', '2023-01-10 11:54:39'),
-(18, 'Pray how.', '2023-01-10 11:54:39', '2023-01-10 11:54:39');
+(18, 'Pray how.', '2023-01-10 11:54:39', '2023-01-10 11:54:39'),
+(19, '456', '2023-01-29 17:31:11', '2023-01-29 17:31:11'),
+(20, 'Accounting2', '2023-01-29 17:31:41', '2023-01-29 17:31:41'),
+(21, 'f55f5', '2023-01-29 17:32:14', '2023-01-29 17:32:14'),
+(22, 'dasd4d', '2023-01-29 17:32:59', '2023-01-29 17:32:59'),
+(23, 'Accountingww', '2023-01-30 07:36:48', '2023-01-30 07:36:48'),
+(24, 'Accounting', '2023-01-31 18:51:09', '2023-01-31 18:51:09');
 
 -- --------------------------------------------------------
 
@@ -129,7 +148,36 @@ INSERT INTO `designations` (`id`, `des_title`, `created_at`, `updated_at`, `dele
 (33, 'DASDASDASDASD', '2023-01-11 12:35:06', '2023-01-11 12:35:06', NULL),
 (34, 'dsavvvvvvvvvv', '2023-01-11 12:36:01', '2023-01-11 12:36:01', NULL),
 (35, 'ttttttttttttttssssssssssssskksisisisis', '2023-01-11 12:36:30', '2023-01-11 12:36:30', NULL),
-(36, 'dotcom', '2023-01-11 12:45:44', '2023-01-11 12:45:44', NULL);
+(36, 'dotcom', '2023-01-11 12:45:44', '2023-01-11 12:45:44', NULL),
+(37, 'sr: sales executive', '2023-01-27 14:02:18', '2023-01-27 14:02:18', NULL),
+(38, 'smm executive', '2023-01-27 14:03:22', '2023-01-27 14:03:22', NULL),
+(39, 'testing 2', '2023-01-27 14:04:44', '2023-01-27 14:04:44', NULL),
+(40, 'sr: sales executived222', '2023-01-27 14:11:26', '2023-01-27 14:11:26', NULL),
+(41, 'x123', '2023-01-29 16:55:29', '2023-01-29 16:55:29', NULL),
+(42, '12345678', '2023-01-29 17:08:11', '2023-01-29 17:08:11', NULL),
+(43, 'dasdsadasd', '2023-01-29 17:13:16', '2023-01-29 17:13:16', NULL),
+(44, 'ertyu', '2023-01-29 17:13:46', '2023-01-29 17:13:46', NULL),
+(45, 'edvbn', '2023-01-29 17:22:16', '2023-01-29 17:22:16', NULL),
+(46, 'svbn', '2023-01-29 17:23:20', '2023-01-29 17:23:20', NULL),
+(47, 'xxcxc', '2023-01-29 17:24:17', '2023-01-29 17:24:17', NULL),
+(48, 'c4f', '2023-01-29 17:33:42', '2023-01-29 17:33:42', NULL),
+(49, 'c4f', '2023-01-29 17:33:48', '2023-01-29 17:33:48', NULL),
+(50, '45das', '2023-01-29 17:34:40', '2023-01-29 17:34:40', NULL),
+(51, 'dasdas', '2023-01-29 17:35:23', '2023-01-29 17:36:11', '2023-01-29 17:36:11'),
+(52, 'loopdas', '2023-01-29 17:36:00', '2023-01-29 17:36:00', NULL),
+(53, 'tsteed', '2023-01-30 07:38:32', '2023-01-30 07:38:32', NULL),
+(54, 'java developer', '2023-01-31 18:34:40', '2023-01-31 18:34:40', NULL),
+(55, 'sr: sales executive', '2023-01-31 19:02:22', '2023-01-31 19:02:22', NULL),
+(56, 'sr: sales executived222', '2023-01-31 19:02:34', '2023-01-31 19:02:34', NULL),
+(57, 'sr: sales executive', '2023-01-31 19:03:46', '2023-01-31 19:03:46', NULL),
+(58, 'dasdasdas', '2023-01-31 19:04:13', '2023-01-31 19:04:13', NULL),
+(59, 'sr: sales executive', '2023-02-03 12:10:42', '2023-02-03 12:10:42', NULL),
+(60, 'testing 3', '2023-02-05 17:42:33', '2023-02-05 17:42:33', NULL),
+(61, '12345678', '2023-02-19 17:36:35', '2023-02-19 17:36:35', NULL),
+(62, '123456tgvrrfc', '2023-02-19 17:37:34', '2023-02-19 17:37:34', NULL),
+(63, 'xcv', '2023-02-19 17:38:42', '2023-02-19 17:38:42', NULL),
+(64, 'new123', '2023-02-19 17:40:04', '2023-02-19 17:40:04', NULL),
+(65, 'sr: sales executivewq', '2023-02-19 17:40:44', '2023-02-19 17:40:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -183,7 +231,8 @@ CREATE TABLE `employees` (
 INSERT INTO `employees` (`id`, `user_id`, `fname`, `lname`, `son_of`, `persnol_email`, `age`, `dob`, `gender`, `city`, `address`, `persnol_number`, `marital_status`, `image`, `status`, `salary`, `etype_id`, `desg_id`, `dep_id`, `created_at`, `updated_at`) VALUES
 (27, 52, 'junaid', 'khan', 'Faraz Shaikh', 'khan@gm.com', 28, '2022-11-23', 'Male', 'karachi', 'north khi', 4086887553, 'single', '1671388017.jpg', 1, 550000, 1, 1, 6, '2022-11-13 02:32:05', '2022-12-19 10:38:49'),
 (28, 53, 'Murray', 'Wonder', 'Omnis odit', 'zorokejaji@mailinator.com', 88, '1988-02-01', 'Female', 'Aut ratione eum et N', 'Ex consequat Praese', 656546456456, 'Quis sunt incididunt', '1671388995.jpg', 0, 550000, 2, 3, 5, '2022-12-18 13:29:36', '2022-12-19 08:10:39'),
-(29, 1, 'Sumaim', 'Ahmed Khan', 'Shamim Ahmed', 'sumaim@gm.com', 30, '2022-11-23', 'Male', 'karachi', 'north khi', 4086887553, 'single', '1671388017.jpg', 1, 550000, 1, 1, 6, '2022-11-09 02:32:05', '2022-12-06 10:38:49');
+(29, 1, 'Sumaim', 'Ahmed Khan', 'Shamim Ahmed', 'sumaim@gm.com', 30, '2022-11-23', 'Male', 'karachi', 'north khi', 4086887553, 'single', '1671388017.jpg', 1, 550000, 1, 1, 6, '2022-11-09 02:32:05', '2022-12-06 10:38:49'),
+(30, 57, 'Ali', 'Ahmed', 'Omnis odit', 'ali@gm.com', 23, '2023-02-01', 'Male', 'karachi', 'north khi', 14086887553, 'single', '1676072653.jfif', 1, 55000, 2, 5, 6, '2023-02-10 18:44:13', '2023-02-10 18:44:13');
 
 -- --------------------------------------------------------
 
@@ -319,7 +368,50 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2021_04_14_190742_create_employer_sumeries_table', 1),
 (13, '2021_04_20_175848_create_roles_table', 1),
 (14, '2019_12_14_000001_create_personal_access_tokens_table', 2),
-(15, '2023_01_10_173529_add_soft_delete_to_designations_table', 2);
+(15, '2023_01_10_173529_add_soft_delete_to_designations_table', 2),
+(16, '2023_02_09_224400_create_permission_tables', 3),
+(17, '2023_02_17_234810_create_posts_table', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_permissions`
+--
+
+INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 1),
+(1, 'App\\Models\\User', 57);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 1),
+(2, 'App\\Models\\User', 57),
+(3, 'App\\Models\\User', 57);
 
 -- --------------------------------------------------------
 
@@ -332,6 +424,33 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'edit user', 'web', '2023-02-10 12:45:15', '2023-02-10 12:45:15'),
+(2, 'create user', 'web', '2023-02-10 12:45:15', '2023-02-10 12:45:15'),
+(3, 'delete user', 'web', '2023-02-10 07:53:03', '2023-02-10 07:53:03'),
+(4, 'add new employee', 'web', '2023-02-15 07:17:23', '2023-02-15 07:17:23'),
+(5, 'edit employee', 'web', '2023-02-17 17:33:58', '2023-02-17 17:33:58'),
+(6, 'edit employee profile', 'web', '2023-02-17 17:34:12', '2023-02-17 17:34:12'),
+(7, 'leave approve', 'web', '2023-02-17 17:36:15', '2023-02-17 17:36:15');
 
 -- --------------------------------------------------------
 
@@ -354,15 +473,68 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'How to Create a CRUD Application Using Ajax in Laravel 9', 'I would like to share with you simple solution of \"target class does not exist laravel 8\" and \"laravel 8 Target class [Controller] does not exist\".\r\n\r\nJust few days ago launch laravel 8 and i was trying to create my first application with laravel 8 and when i create controller call PostController and when i used with route then i found following issue:', NULL, NULL),
+(2, 'Omnis eos quae suntdasda', 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy', NULL, '2023-02-19 07:17:17'),
+(14, 'Omnis aute magnam en', 'Voluptas temporibus', '2023-02-19 07:18:34', '2023-02-19 07:19:41');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
   `id` bigint UNSIGNED NOT NULL,
-  `role_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'HR', 'web', '2023-02-10 12:44:30', NULL),
+(2, 'Admin', 'web', '2023-02-10 12:44:30', '2023-02-10 12:44:56'),
+(3, 'executive', 'web', '2023-02-10 07:53:03', '2023-02-10 07:53:03'),
+(4, 'Super Admin', 'web', '2023-02-14 18:08:48', '2023-02-14 18:08:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint UNSIGNED NOT NULL,
+  `role_id` bigint UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(2, 1),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -407,7 +579,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `rol_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Sumaim Ahmed', 'sumaim@gm.com', 1, NULL, '$2y$10$AC3e256Vnq1CTzxk5QpeiOfmgtUygBnveZ.qItRPMrQHEuMld9oHS', NULL, '2021-07-01 06:17:09', '2021-07-01 06:17:09'),
 (52, 'Khan Sahb', 'khan@mail.com', 2, NULL, '$2y$10$MgjzuVsZrQ6mZ4wqfudL3e3/hurDaQCL3c7JBdRn4XTyk7GCnVq9W', NULL, '2022-11-13 02:30:04', '2022-11-13 02:30:04'),
-(53, 'Keith Combs', 'keith@gm.com', 2, NULL, '$2y$10$MiF/mGcLDX5iKRT5yQfX5.oaz.aAQ9XrowMSGkZ8ZzEDxBiCUls6e', NULL, '2022-12-18 13:28:33', '2022-12-18 13:28:33');
+(57, 'Ali Ahmed', 'ali@gm.com', 2, NULL, '$2y$10$Q5qn3ijlOshFoYgmic8fD.H/Sr.wst37t6p3RH.H/3vtJwpSZHuym', NULL, '2023-02-10 18:42:59', '2023-02-10 18:42:59');
 
 -- --------------------------------------------------------
 
@@ -416,13 +588,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `rol_id`, `email_verified_at`, `pass
 -- (See below for the actual view)
 --
 CREATE TABLE `vattendance` (
-`id` int
-,`user_id` int
-,`date` date
+`attendance_type` varchar(211)
 ,`checkin` time
 ,`checkout` time
-,`attendance_type` varchar(211)
+,`date` date
+,`id` int
 ,`name` varchar(255)
+,`user_id` int
 );
 
 -- --------------------------------------------------------
@@ -442,6 +614,12 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Indexes for table `attendances`
 --
 ALTER TABLE `attendances`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `custom_roles`
+--
+ALTER TABLE `custom_roles`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -506,10 +684,31 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
 -- Indexes for table `personal_access_tokens`
@@ -520,10 +719,24 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
 -- Indexes for table `todos`
@@ -549,16 +762,22 @@ ALTER TABLE `attendances`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
+-- AUTO_INCREMENT for table `custom_roles`
+--
+ALTER TABLE `custom_roles`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `designations`
 --
 ALTER TABLE `designations`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `documents`
@@ -570,7 +789,7 @@ ALTER TABLE `documents`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `employee_types`
@@ -606,7 +825,13 @@ ALTER TABLE `leaves`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -615,10 +840,16 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `todos`
@@ -630,7 +861,30 @@ ALTER TABLE `todos`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

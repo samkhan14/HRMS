@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
         'departments' => DepartmentController::class,
         'roles' => RoleController::class,
         'permissions' => PermissionController::class,
-        'posts' => PostController::class
+        //'posts' => PostController::class
     ]);
 
 });

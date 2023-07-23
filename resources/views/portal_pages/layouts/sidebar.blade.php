@@ -40,7 +40,7 @@
               <li><a href="{{url('leaves')}}"><i class="la la-table"></i> <span>Leaves</span> </a></li>
               <li><a href="{{url('roles')}}"><i class="la la-object-ungroup"></i> <span>Roles</span> </a></li>
               <li><a href="{{url('permissions')}}"><i class="la la-table"></i> <span>Permission</span> </a></li>
-              <li><a href="{{url('posts')}}"><i class="la la-columns"></i> <span>Posts</span> </a></li>
+              {{-- <li><a href="{{url('posts')}}"><i class="la la-columns"></i> <span>Posts</span> </a></li> --}}
               <li><a href="{{url('all-users')}}"><i class="la la-user-plus"></i> <span>Users</span> </a></li>
 
 

@@ -28,9 +28,9 @@
                   <div class="row">
                     <div class="col-md-5">
                       <div class="profile-info-left">
-                        <h3 class="user-name m-t-0 mb-0">{{$getEmpProfDetails->fname}} {{$getEmpProfDetails->lname}}</h3>
-                        <h6 class="text-muted">{{ $getEmpProfDetails->department->dep_name}}</h6>
-                        <small class="text-muted">{{ $getEmpProfDetails->designation->des_title}}</small>
+                        <h3 class="user-name m-t-0 mb-0">{{$getEmpProfDetails->full_name}}</h3>
+                        <h6 class="text-muted">{{ isset($getEmpProfDetails->department->dep_name) ? $getEmpProfDetails->department->dep_name : ""}}</h6>
+                        <small class="text-muted">{{ isset($getEmpProfDetails->designation->des_title) ? $getEmpProfDetails->designation->des_title : ""}}</small>
                         <div class="staff-id">Employee ID : {{ $getEmpProfDetails->user_id}}</div>
                         <div class="small doj text-muted">Date of Join : {{ $getEmpProfDetails->userinfo->created_at}}</div>
                         <div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>

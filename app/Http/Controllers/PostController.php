@@ -33,7 +33,7 @@ class PostController extends Controller
             ['id' => $postID],
             [
                 'title' => $request->title,
-                 'body' => $request->body
+                 'description' => $request->body
             ]
         );
 

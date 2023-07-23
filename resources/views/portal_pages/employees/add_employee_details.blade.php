@@ -34,17 +34,17 @@
                   <div class="col-xl-6">
                     <input type="hidden" name="user_id" value="{{ $user_id }}">
                     <div class="form-group row">
-                      <label class="col-lg-3 col-form-label">First Name</label>
+                      <label class="col-lg-3 col-form-label">Full Name</label>
                       <div class="col-lg-9">
-                        <input type="text" name="fname" class="form-control">
+                        <input type="text" name="full_name" value="{{ old('full_name', $user_full_name) }}" class="form-control" @readonly(true)>
                       </div>
                     </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                       <label class="col-lg-3 col-form-label">Last Name</label>
                       <div class="col-lg-9">
                         <input name="lname" type="text" class="form-control">
                       </div>
-                    </div>
+                    </div> --}}
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">Gender</label>
                         <div class="col-lg-9">
@@ -120,7 +120,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">Employee Image</label>
                         <div class="col-lg-9">
-                          <input type="file" name="image[]" class="form-control">
+                          <input type="file" name="image" class="form-control">
                         </div>
                       </div>
                       <div class="form-group row">

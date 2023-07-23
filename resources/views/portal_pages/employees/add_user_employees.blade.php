@@ -1,4 +1,10 @@
-﻿@extends('portal_pages.layouts.master')
+﻿@php
+use Spatie\Permission\Models\Role;
+
+$getroles = Role::get();
+@endphp
+
+@extends('portal_pages.layouts.master')
 @section('content')
   <div class="page-wrapper">
     <div class="content container-fluid">
@@ -86,15 +92,16 @@
                 <tr>
                   <td>
                     <h2 class="table-avatar">
-                      <a href="{{ url('employee/profile/'.$user->id)}}" class="avatar">
-                        <img src="{{ asset('uploads/employee_images/'.$user->empRelation->image)}}" alt="">
-                    </a>
+                        <a href="{{ isset($user->id) ? url('employee/profile/'.$user->id) : '#' }}" class="avatar">
+                            <img src="{{ asset('uploads/employee_images/'. (isset($user->empRelation->image) ? $user->empRelation->image : 'user.jpg')) }}" alt="user">
+                        </a>
                       <a href="profile.html">{{$user->name}}<span>Admin</span></a>
                     </h2>
                   </td>
                   <td><a href="mailto:{{$user->email}}" class="__cf_email__" data-cfemail="482c2926212d2438273a3c2d3a082d30292538242d662b2725">{{$user->email}}</a></td>
                   <td>
-                    <span class="badge bg-inverse-danger">{{$user->rol_id == 1 ? 'Super Admin' : 'Executive'}}</span>
+                    <span class="badge bg-inverse-danger"> @if($user->role()) {{ $user->role()->name }} @else <p>No Role Assigned</p>
+                    @endif</span>
                   </td>
                   <td>{{$user->created_at}}</td>
                   <td>{{$user->updated_at}}</td>
@@ -147,6 +154,7 @@
                     <input class="form-control" name="password" type="password">
                   </div>
                 </div>
+
                 {{-- <div class="col-sm-6">
                   <div class="form-group">
                     <label>Confirm Password</label>
@@ -154,16 +162,17 @@
                   </div>
                 </div> --}}
 
-                {{-- <div class="col-sm-6">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <label>Role</label>
-                    <select class="select">
-                      <option>Admin</option>
-                      <option>Client</option>
-                      <option>Employee</option>
+                    <div class="form-group">
+                        <select class="form-control" name="roles">
+                        @foreach ($getroles as $role)
+                        <option>{{ $role->name }}</option>
+                        @endforeach
                     </select>
                   </div>
-                </div> --}}
+                </div>
 
               </div>
               {{-- <div class="table-responsive m-t-15">

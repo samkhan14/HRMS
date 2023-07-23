@@ -14,58 +14,69 @@ use Session;
 use DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\Employee;
 
 class UsersController extends Controller
 {
 
     public function all_Users()
     {
-       // return User::role('HR')->get();
+        // return User::role('HR')->get();
         //return auth()->user()->getAllPermissions();
         //return  auth()->user()->givePermissionTo('edit user');
-         //auth()->user()->assignRole('executive');
+        //auth()->user()->assignRole('executive');
 
         //  Role::create(['name' => 'writer']);
         //  Permission::create(['name' => 'edit articles']);
-//          $role = Role::findById(3);
+        //          $role = Role::findById(3);
         // // // $role->revokePermissionTo($role);
         //  $permission = Permission::findById(3);
         // // // $permission->removeRole($role);
         //  $role->givePermissionTo($permission);
 
-          $get_users = User::with('empRelation')->get();
-          return view('portal_pages.employees.add_user_employees',compact('get_users'));
+        $get_users = User::with('empRelation', 'roles')->get();
+        //dd($get_users);
+        return view('portal_pages.employees.add_user_employees', compact('get_users'));
     }
 
-    //add user for employee
     public function adduserEmployee(Request $request)
     {
-        // return Auth::user();
-       // if(!empty(Auth::user()->rol_id) AND Auth::user()->rol_id == 1){
-            if($request->isMethod('post')){
-                $data = $request->all();
-                $user = new User;
-                $user->name = $data['name'];
-                $user->email = $data['email'];
-                $user->password = bcrypt($data['password']);
-                $user->save();
-                // $user_id = $user->id;
-                if ($user) {
-                    Mail::to($data['email'])->send(new Welcome($user));
-                    echo"send";
-                }
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            $user = new User;
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password = bcrypt($data['password']);
+            $user->save();
 
+            if ($user) {
+                // Assign the selected role to the user
+                $roleName = $request->input('roles');
+                $role = Role::findByName($roleName);
+                $user->assignRole($role);
+            }
+
+            // Retrieve the user's full name
+            $full_name = $data['name'];
+
+            $user_id = $user->id;
+            $employee = new Employee;
+            $employee->user_id = $user_id;
+            $employee->full_name = $full_name;
+            $employee->save();
+
+            if ($user && $employee) {
+                // Save the full name in the session
+                session(['user_full_name' => $full_name]);
                 return redirect('/add-employee');
             }
-            else{
-                return redirect::back()->with('error','User not created Yet Please try again');
-            }
-      //  }
-        // else{
-        //     return redirect::back()->with('error','you are not allowed to add a new user');
-        // }
-
+        } else {
+            return redirect()->back()->with('error', 'User not created yet. Please try again');
+        }
     }
+
+
+
 
     public function adminlogin(Request $request)
     {

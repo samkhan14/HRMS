@@ -22,7 +22,7 @@
                         <tr id="post_id_{{ $post->id }}">
                             <td>{{ $post->id  }}</td>
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->body }}</td>
+                            <td>{{ $post->description }}</td>
                             <td><a href="javascript:void(0)" id="edit-post" data-id="{{ $post->id }}" class="btn btn-info">Edit</a></td>
                             <td>
                                 <a href="javascript:void(0)" id="delete-post" data-id="{{ $post->id }}" class="btn btn-danger delete-post">Delete</a>
