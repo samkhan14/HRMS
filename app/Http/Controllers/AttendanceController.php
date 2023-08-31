@@ -23,8 +23,8 @@ class AttendanceController extends Controller
     public function getAllAttendances()
     {
         $getAttRecord = Attendance::where(['date' => Carbon::now()])->get();
-        dd($getAttRecord);
-        //return view('portal_pages.attendance.admin_attendance',compact('getAttRecord'));
+       // dd($getAttRecord);
+        return view('portal_pages.attendance.admin_attendance',compact('getAttRecord'));
     }
 
     public function SaveUploadAttendance(Request $request)

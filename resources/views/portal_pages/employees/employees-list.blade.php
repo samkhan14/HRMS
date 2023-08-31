@@ -90,9 +90,9 @@
                                         <td>{{ $all_emps->user_id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
-                                                <a href="{{ url('employee/profile', $all_emps->user_id) }}" class="avatar">
+                                                <a href="{{ isset($all_emps->user_id) ? url('employee/profile', $all_emps->user_id) : '#' }}" class="avatar">
                                                     <img alt=""
-                                                        src="{{ asset('uploads/employee_images/' . $all_emps->image) }}">
+                                                        src="{{ asset('uploads/employee_images/' . ( isset($all_emps->image) ? $all_emps->image : 'user.jpg' )) }}">
                                                 </a>
                                                 <a href="{{ url('employee/profile', $all_emps->user_id) }}">{{ $all_emps->full_name }}
                                                     <span>{{ isset($all_emps->designation->des_title) ? $all_emps->designation->des_title : "Please add Designation" }}</span></a>
@@ -105,8 +105,10 @@
                                         <td>{{ $all_emps->persnol_number }}</td>
                                         <td>{{ isset($all_emps->userinfo->created_at) ? $all_emps->userinfo->created_at : 'N/A' }}
                                         </td>
-                                        <td> <a href="" class="btn btn-white btn-sm btn-rounded"
-                                                aria-expanded="false">{{ isset($all_emps->designation->des_title) ? $all_emps->designation->des_title : "Please add Designation" }} </a></td>
+                                        <td> <a href="" class="btn btn-white btn-sm btn-rounded" aria-expanded="false">
+                                            {{ isset($all_emps->designation->des_title) ? $all_emps->designation->des_title : "Please add Designation" }}
+                                        </a>
+                                      </td>
                                         <td>
                                             {{ $all_emps->status == 1 ? 'Active' : 'InActive' }}
                                         </td>

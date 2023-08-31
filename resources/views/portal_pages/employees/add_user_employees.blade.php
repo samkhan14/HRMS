@@ -82,6 +82,7 @@ $getroles = Role::get();
                   <th>Name</th>
                   <th>Email</th>
                   <th>Role</th>
+                  <th>Role Permissions</th>
                   <th>Created Date</th>
                   <th>Update Date</th>
                   <th class="text-right">Action</th>
@@ -93,15 +94,30 @@ $getroles = Role::get();
                   <td>
                     <h2 class="table-avatar">
                         <a href="{{ isset($user->id) ? url('employee/profile/'.$user->id) : '#' }}" class="avatar">
-                            <img src="{{ asset('uploads/employee_images/'. (isset($user->empRelation->image) ? $user->empRelation->image : 'user.jpg')) }}" alt="user">
+                            <img src="{{ asset('uploads/employee_images/' . (isset($user->empRelation->image) ? $user->empRelation->image : 'user.jpg')) }}" alt="user">
                         </a>
-                      <a href="profile.html">{{$user->name}}<span>Admin</span></a>
+
+                      <a href="profile.html">{{$user->name}}</a>
                     </h2>
                   </td>
                   <td><a href="mailto:{{$user->email}}" class="__cf_email__" data-cfemail="482c2926212d2438273a3c2d3a082d30292538242d662b2725">{{$user->email}}</a></td>
                   <td>
-                    <span class="badge bg-inverse-danger"> @if($user->role()) {{ $user->role()->name }} @else <p>No Role Assigned</p>
-                    @endif</span>
+                    <ul>
+                         @if($user->roles)
+                         @foreach($user->roles as $role)
+                            <li class="badge bg-inverse-danger">{{ $role->name }}</li>
+                        @endforeach
+                         @else <li>X</li>
+                    @endif
+                    </ul>
+                  </span>
+                  </td>
+                  <td>
+                    <ul>
+                        @foreach($user->getPermissionsViaRoles() as $permission)
+                            <li class="badge bg-inverse-danger">{{ $permission->name }}</li>
+                        @endforeach
+                    </ul>
                   </td>
                   <td>{{$user->created_at}}</td>
                   <td>{{$user->updated_at}}</td>
@@ -166,7 +182,7 @@ $getroles = Role::get();
                   <div class="form-group">
                     <label>Role</label>
                     <div class="form-group">
-                        <select class="form-control" name="roles">
+                        <select class="form-control" name="roles[]">
                         @foreach ($getroles as $role)
                         <option>{{ $role->name }}</option>
                         @endforeach

@@ -13,6 +13,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -46,11 +47,14 @@ class User extends Authenticatable
 
     public function empRelation()
     {
-        return $this->hasOne(Employee::class);
+        return $this->hasOne(Employee::class, 'user_id');
     }
 
     public function role()
     {
         return $this->roles->first(); // Assuming a user can have only one role
     }
+
+
+
 }

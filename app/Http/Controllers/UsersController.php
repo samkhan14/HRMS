@@ -40,40 +40,39 @@ class UsersController extends Controller
     }
 
     public function adduserEmployee(Request $request)
-    {
-        if ($request->isMethod('post')) {
-            $data = $request->all();
-            $user = new User;
-            $user->name = $data['name'];
-            $user->email = $data['email'];
-            $user->password = bcrypt($data['password']);
-            $user->save();
+{
+    if ($request->isMethod('post')) {
+        $data = $request->all();
+        $user = new User;
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->save();
 
-            if ($user) {
-                // Assign the selected role to the user
-                $roleName = $request->input('roles');
-                $role = Role::findByName($roleName);
-                $user->assignRole($role);
-            }
-
-            // Retrieve the user's full name
-            $full_name = $data['name'];
-
-            $user_id = $user->id;
-            $employee = new Employee;
-            $employee->user_id = $user_id;
-            $employee->full_name = $full_name;
-            $employee->save();
-
-            if ($user && $employee) {
-                // Save the full name in the session
-                session(['user_full_name' => $full_name]);
-                return redirect('/add-employee');
-            }
-        } else {
-            return redirect()->back()->with('error', 'User not created yet. Please try again');
+        if ($user) {
+            // Assign multiple roles to the user
+            $roles = $request->input('roles'); // Assuming 'roles' is an array of role names
+            $user->assignRole($roles);
         }
+
+        // Retrieve the user's full name
+        $full_name = $data['name'];
+
+        $user_id = $user->id;
+        $employee = new Employee;
+        $employee->user_id = $user_id;
+        $employee->full_name = $full_name;
+        $employee->save();
+
+        if ($user && $employee) {
+            // Save the full name in the session
+            session(['user_full_name' => $full_name]);
+            return redirect('/add-employee');
+        }
+    } else {
+        return redirect()->back()->with('error', 'User not created yet. Please try again');
     }
+}
 
 
 
